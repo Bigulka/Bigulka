@@ -1,0 +1,6 @@
+import math
+x=eval(input("введите переменную x:"))
+y=float(input("введите переменную y:"))
+z=float(input("введите переменную z:"))
+s=(mathsqrt((x**(1/3))+(x**(y+2)))*(10**(1/2)))*(math.asin(z)**2-abc(x-y))
+print(round(s,4))
