@@ -1,0 +1,5 @@
+import math
+x=float(input("введите переменную x:"))
+y=eval(input("введите переменную y:"))
+s=((x**(y+1))+(math.exp(y-1)))/(1+(x*abs(y-math.tab(z))))*(1+abs(y-x))+((abs(y-x)**2)/2)-((abs(y-x)**3)/3)
+print(round(s,6))
