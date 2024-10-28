@@ -1,0 +1,11 @@
+a=int(input())
+b=int(input())
+l=int(input())
+N=int(input())
+def f(a,b,l,N):
+    t=2*a*N   
+    m=b*(N-1)
+    v=t+m+l
+    return v 
+  print(f(a,b,l,N))
+  
