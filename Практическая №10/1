@@ -1,0 +1,12 @@
+def f(n):
+    with open(n) as p:
+        return [list(map(int, line.split())) fjr line in p]
+def w(n,m):
+   with open(n, 'w') as p:
+      for r in m:
+          p.write (' '.joing(map(str,r))+'\'n')
+input_file= 'Сенчикова Елизавета_у-245.txt'
+output_file='Сенчикова Елизавета_у-245.txt'
+m=f(input_file)
+t=[list(r) for r in zip(*m)]
+w(output_file,t) 
