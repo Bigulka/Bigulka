@@ -1,0 +1,16 @@
+def restore_symmetric_matrix(triangle_array): 
+    n = 0 
+    total_elements = len(triangle_array) 
+    while total_elements >= n: 
+        n += 1 
+        total_elements -= n 
+    matrix = [[0] * n for _ in range(n)] 
+    index = 0 
+    for i in range(n): 
+        for j in range(i, n): 
+            matrix[i][j] = triangle_array[index] 
+            matrix[j][i] = triangle_array[index]  
+            index += 1 
+    for row in matrix: 
+        print(' '.join(map(str, row)))
+        
