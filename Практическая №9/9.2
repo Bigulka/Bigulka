@@ -1,0 +1,12 @@
+def transform_matrix(matrix): 
+    diagonal_elements = [matrix[i][i] for i in range(len(matrix))] 
+    trace_sum = sum(diagonal_elements) 
+    transformed_matrix = [] 
+    for i in range(len(matrix)): 
+        if i % 2 == 0:  
+            transformed_row = [element / trace_sum for element in matrix[i]] 
+        else:  
+            transformed_row = matrix[i] 
+        transformed_matrix.append(transformed_row) 
+     
+    return transformed_matrix, trace_sum
