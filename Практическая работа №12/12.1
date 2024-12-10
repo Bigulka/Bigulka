@@ -1,0 +1,10 @@
+def find_max():
+    number = int(input(" (0): "))
+    if number == 0:
+        return 0 
+    else:
+        max_of_rest = find_max() 
+        return max(number, max_of_rest)  
+
+max_value = find_max()
+print("Наибольшее значение в последовательности:", max_value)
