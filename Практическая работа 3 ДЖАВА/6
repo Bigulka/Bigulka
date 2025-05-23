@@ -1,0 +1,54 @@
+public class StickGame {
+
+    public static boolean canWin(long n) {
+        // Базовый случай: если палочек нет, то игрок проиграл.
+        if (n <= 0) {
+            return false;
+        }
+
+        // Если палочек 1, то игрок выиграл, забрав последнюю палочку.
+        if (n == 1) {
+            return true;
+        }
+
+        // Если количество палочек четное:
+        if (n % 2 == 0) {
+            // Игрок может взять одну палочку, оставив (n - 1) палочек.
+            // Если противник проиграет, то текущий игрок выиграет.
+            if (!canWin(n - 1)) {
+                return true;
+            }
+
+            // Игрок может взять половину палочек, оставив (n / 2) палочек.
+            // Если противник проиграет, то текущий игрок выиграет.
+            if (!canWin(n / 2)) {
+                return true;
+            }
+
+            // Если противник выиграет в обоих случаях, то текущий игрок проиграет.
+            return false;
+        } else { // Если количество палочек нечетное:
+            // Игрок может взять только одну палочку, оставив (n - 1) палочек.
+            // Если противник проиграет, то текущий игрок выиграет.
+            if (!canWin(n - 1)) {
+                return true;
+            }
+
+            // Если противник выиграет, то текущий игрок проиграет.
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("1: " + canWin(1));   // true
+        System.out.println("2: " + canWin(2));   // true
+        System.out.println("3: " + canWin(3));   // true
+        System.out.println("4: " + canWin(4));   // false
+        System.out.println("5: " + canWin(5));   // true
+        System.out.println("6: " + canWin(6));   // true
+        System.out.println("7: " + canWin(7));   // false
+
+        System.out.println("10: " + canWin(10)); // true
+        System.out.println("11: " + canWin(11)); // false
+    }
+}
