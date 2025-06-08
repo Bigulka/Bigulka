@@ -1,0 +1,93 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class SnailSort {
+
+    // Метод для вывода массива по змейке (улитке)
+    public static int[] snail(int[][] array) {
+        int n = array.length;
+        int[] result = new int[n * n];
+        int index = 0;
+
+        int top = 0;
+        int bottom = n - 1;
+        int left = 0;
+        int right = n - 1;
+
+        while (top <= bottom && left <= right) {
+            // Идём слева направо
+            for (int i = left; i <= right; i++) {
+                result[index++] = array[top][i];
+            }
+            top++;
+
+            // Идём сверху вниз
+            for (int i = top; i <= bottom; i++) {
+                result[index++] = array[i][right];
+            }
+            right--;
+
+            if (top <= bottom) {
+                // Идём справа налево
+                for (int i = right; i >= left; i--) {
+                    result[index++] = array[bottom][i];
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                // Идём снизу вверх
+                for (int i = bottom; i >= top; i--) {
+                    result[index++] = array[i][left];
+                }
+                left++;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // Входное число N - количество элементов
+        int N = 16; // Например 16, чтобы получить 4x4 массив
+
+        int n = (int) Math.sqrt(N);
+        if (n * n != N) {
+            System.out.println("N must be a perfect square for a square matrix.");
+            return;
+        }
+
+        int[] randomNumbers = new int[N];
+        Random rand = new Random();
+
+        // Генерируем случайные числа
+        for (int i = 0; i < N; i++) {
+            randomNumbers[i] = rand.nextInt(100); // например от 0 до 99
+        }
+
+        // Сортируем числа
+        Arrays.sort(randomNumbers);
+
+        // Заполняем двумерный массив отсортированными числами
+        int[][] matrix = new int[n][n];
+        int idx = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = randomNumbers[idx++];
+            }
+        }
+
+        // Выводим исходный массив
+        System.out.println("Sorted matrix:");
+        for (int[] row : matrix) {
+            System.out.println(Arrays.toString(row));
+        }
+
+        // Получаем змейку
+        int[] snailArray = snail(matrix);
+
+        // Выводим результат
+        System.out.println("Snail order:");
+        System.out.println(Arrays.toString(snailArray));
+    }
+}
